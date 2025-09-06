@@ -1,0 +1,54 @@
+<h2>Lista Klientów</h2>
+<table class="client-table">
+  <thead>
+  <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Email</th>
+    <th>Wypożycz Auto</th>
+    <th>Samochody</th>
+    <th>Zwróć Auto</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients">
+    <td>{{ client.firstName }}</td>
+    <td>{{ client.surname }}</td>
+    <td>{{ client.email }}</td>
+
+    <td>
+      <div *ngIf="rentModeClientId !== client.id">
+        <button (click)="enableRentMode(client.id!)">Wypożycz</button>
+      </div>
+
+      <div *ngIf="rentModeClientId === client.id">
+        <select [(ngModel)]="selectedCarId">
+          <option [ngValue]="null" disabled>Wybierz samochód</option>
+          <option *ngFor="let car of availableCars" [ngValue]="car.id">
+            {{ car.brand }} {{ car.model }} ({{ car.pricePerDay }} zł)
+          </option>
+        </select>
+        <button (click)="rentCar(client.id!)">Potwierdź</button>
+        <button (click)="cancelRent()">Anuluj</button>
+      </div>
+    </td>
+
+    <td>
+      <div class="rented-cars">
+        <div *ngIf="client.rentedCars.length === 0">—</div>
+        <div *ngFor="let car of client.rentedCars" class="car-item">
+          {{ car.brand }} {{ car.model }}
+        </div>
+      </div>
+    </td>
+
+    <td>
+      <div class="rented-cars">
+        <div *ngFor="let car of client.rentedCars" class="car-item">
+          <button (click)="returnCar(client, car.id!)">Zwróć</button>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

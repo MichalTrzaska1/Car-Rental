@@ -1,0 +1,7 @@
+<h2>Dodaj Klienta</h2>
+<form (ngSubmit)="addClient()">
+  <input [(ngModel)]="client.firstName" name="firstName" placeholder="Imię" required />
+  <input [(ngModel)]="client.surname" name="surname" placeholder="Nazwisko" required />
+  <input [(ngModel)]="client.email" name="email" placeholder="E-mail" type="email" required />
+  <button type="submit">Dodaj</button>
+</form>

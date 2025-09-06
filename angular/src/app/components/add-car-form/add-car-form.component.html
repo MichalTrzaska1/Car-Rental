@@ -1,0 +1,7 @@
+<h2>Add Car</h2>
+<form (ngSubmit)="addCar()">
+  <input [(ngModel)]="car.brand" name="brand" placeholder="Brand" required />
+  <input [(ngModel)]="car.model" name="model" placeholder="Model" required />
+  <input [(ngModel)]="car.pricePerDay" name="price" type="number" placeholder="Price/day" required />
+  <button type="submit">Add Car</button>
+</form>

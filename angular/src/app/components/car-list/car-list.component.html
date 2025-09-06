@@ -1,0 +1,19 @@
+<h2>Lista Samochodów</h2>
+<table class="cars-table">
+  <thead>
+  <tr>
+    <th>Marka</th>
+    <th>Model</th>
+    <th>Cena za dzień PLN</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let car of cars">
+    <td>{{ car.brand }}</td>
+    <td>{{ car.model }}</td>
+    <td>{{ car.pricePerDay }}</td>
+    <td>{{ car.status === 'AVAILABLE' ? 'Dostępny' : 'Wypożyczony' }}</td>
+  </tr>
+  </tbody>
+</table>
